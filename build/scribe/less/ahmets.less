@@ -1,0 +1,26 @@
+.selection(@color)
+{
+	&::-moz-selection {
+	    color: @color;
+	}
+	&::selection {
+	     color: @color;
+	}
+}
+.bgp(@param: 'asd')
+{
+	background-image: url('../img/@{param}.png');
+}
+.bgj(@param: 'asd')
+{
+	background-image: url('../img/@{param}.jpg');
+}
+.rel{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
