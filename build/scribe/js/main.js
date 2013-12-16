@@ -34,13 +34,10 @@ var anim = {
 		app.controlsShown = false;
 		$("#iPhone").removeClass("inScene");
 		$(".message,#controls").fadeOut();
-		$(this).fadeOut(function(){
-			mb_video.pause();
-			mb_video.currentTime = '0';
-			i_video.pause();
-			i_video.currentTime = '0';
-			mb_video.play();
-		});
+		mb_video.pause();
+		mb_video.currentTime = '0';
+		i_video.pause();
+		i_video.currentTime = '0';
 	}
 }
 
@@ -110,7 +107,7 @@ $(function(){
             else if(index == 2)
             {
 	            $("#MacBook").addClass("fadeInLeftBig");
-	            mb_video.play();
+				setTimeout("mb_video.play()", 1500);
 	            if(!$(".bxslider").is(":hidden"))
 	            {
 		            $("#fader").fadeIn();
