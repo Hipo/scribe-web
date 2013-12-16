@@ -28,6 +28,19 @@ var anim = {
 	},
 	exitiPhone : function(){
 		$("#MacBook").css('left',"-50%");
+	},
+	reset: function(){
+		$("#mb-blur").fadeOut();
+		app.controlsShown = false;
+		$("#iPhone").removeClass("inScene");
+		$(".message,#controls").fadeOut();
+		$(this).fadeOut(function(){
+			mb_video.pause();
+			mb_video.currentTime = '0';
+			i_video.pause();
+			i_video.currentTime = '0';
+			mb_video.play();
+		});
 	}
 }
 
@@ -85,15 +98,14 @@ $(function(){
 		afterLoad: function(anchorLink, index){
 	            app.refreshNav(index);
 	            if(index == 1)
-	            {
-		            mb_video.pause();
-		            i_video.pause();
+	            {   
 					var position = $("#logo-spacer").offset();
 				    $("#logo").css({
 				        top:position.top
 				    });
 		            $("#logo").removeClass("scrolled");
 		            $("#fader").fadeOut();
+		            anim.reset();
 	            }
 	            else if(index == 2)
 	            {
@@ -107,8 +119,7 @@ $(function(){
 	            else if(index == 3)
 	            {
 		            $("#fader").fadeOut();
-		            mb_video.pause();
-		            i_video.pause();
+		            anim.reset();
 	            }
 	        },
 			onLeave: function(index, direction){
@@ -170,7 +181,7 @@ $(function(){
 	
 	$("#try").click(function(){
 		$(this).addClass("animated pulse");
-		setTimeout("anim.exitMb();anim.entriPhone();setTimeout('i_video.play();', 1000);", 1000); 
+		setTimeout("anim.exitMb();anim.entriPhone();setTimeout('i_video.play();', 1000);", 1000);
 	});
 
 	//Navigation Buttons
