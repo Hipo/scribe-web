@@ -213,6 +213,7 @@ body{
 		top: 10%;
 		width: 80%;
 		height: 100%;
+		.lh-perspective(1000);
 	}
 	#MacBook{
 		width: 80%;
@@ -246,6 +247,14 @@ body{
 			left: 0px;
 			top: 0px;
 			display: none;
+		}
+		video{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 200;
+			width: 100%;
+			height: auto;
 		}
 		#controls{
 			display: none;
@@ -301,12 +310,6 @@ body{
 				line-height: 25px;
 				margin-left: 10%;
 			}
-		}
-		video{
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			z-index: 200;
 		}
 	}
 	#iPhone{

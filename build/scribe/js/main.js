@@ -34,13 +34,10 @@ var anim = {
 		app.controlsShown = false;
 		$("#iPhone").removeClass("inScene");
 		$(".message,#controls").fadeOut();
-		$(this).fadeOut(function(){
-			mb_video.pause();
-			mb_video.currentTime = '0';
-			i_video.pause();
-			i_video.currentTime = '0';
-			mb_video.play();
-		});
+		mb_video.pause();
+		mb_video.currentTime = '0';
+		i_video.pause();
+		i_video.currentTime = '0';
 	}
 }
 
@@ -96,39 +93,38 @@ $(function(){
     		app.refreshSlideNav(slideIndex);
     	},
 		afterLoad: function(anchorLink, index){
-	            app.refreshNav(index);
-	            if(index == 1)
-	            {   
-					var position = $("#logo-spacer").offset();
-				    $("#logo").css({
-				        top:position.top
-				    });
-		            $("#logo").removeClass("scrolled");
-		            $("#fader").fadeOut();
-		            anim.reset();
-	            }
-	            else if(index == 2)
+            app.refreshNav(index);
+            if(index == 1)
+            {   
+				var position = $("#logo-spacer").offset();
+			    $("#logo").css({
+			        top:position.top
+			    });
+	            $("#logo").removeClass("scrolled");
+	            $("#fader").fadeOut();
+	            anim.reset();
+            }
+            else if(index == 2)
+            {
+	            $("#MacBook").addClass("fadeInLeftBig");
+				setTimeout("mb_video.play()", 1500);
+	            if(!$(".bxslider").is(":hidden"))
 	            {
-		            $("#MacBook").addClass("fadeInLeftBig");
-		            mb_video.play();
-		            if(!$(".bxslider").is(":hidden"))
-		            {
-			            $("#fader").fadeIn();
-		            }
+		            $("#fader").fadeIn();
 	            }
-	            else if(index == 3)
-	            {
-		            $("#fader").fadeOut();
-		            anim.reset();
-	            }
-	        },
-			onLeave: function(index, direction){
-	            if(index == '1' && direction =='down'){
-	                $("#logo").addClass("scrolled");
-	            }
-	        }
-	        
-			});
+            }
+            else if(index == 3)
+            {
+	            $("#fader").fadeOut();
+	            anim.reset();
+            }
+        },
+		onLeave: function(index, direction){
+            if(index == '1' && direction =='down'){
+                $("#logo").addClass("scrolled");
+            }
+        }
+	});
     
 	$mb_video.bind("timeupdate", function() {
 	   if(Math.floor(this.currentTime) == 12)
@@ -250,6 +246,7 @@ function align_content()
 	//Align content
 	$mb_width = $("#mb").outerWidth();
 	$mb_height = $("#mb").outerHeight();
+	$("#mb").height($mb_height);
 	var css = {
 		top : $mb_height * 0.0783,
 		left : $mb_width * 0.1465,
