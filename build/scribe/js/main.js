@@ -88,8 +88,9 @@ $(function(){
 	var to_share;
 	$(".hova").mouseover(function(){
 		$(this).addClass("slideOutUp");
+		$(".unter").removeClass("slideOutUp").addClass("slideInDown");
 		clearTimeout(to_share);
-		to_share = setTimeout('$(".hova").addClass("slideInDown").removeClass("slideOutUp");', 2000);
+		to_share = setTimeout('$(".unter").addClass("slideOutUp").removeClass("slideInDown");$(".hova").addClass("slideInDown").removeClass("slideOutUp");', 7000);
 	});
 	
     $.fn.fullpage({
