@@ -85,6 +85,13 @@ $(window).load(function(){
 $(function(){
 	//DOM READY
 	
+	var to_share;
+	$(".hova").mouseover(function(){
+		$(this).addClass("slideOutUp");
+		clearTimeout(to_share);
+		to_share = setTimeout('$(".hova").addClass("slideInDown").removeClass("slideOutUp");', 2000);
+	});
+	
     $.fn.fullpage({
     	fixedElements: '#logo, #nav',
     	slidesNavigation: false,
