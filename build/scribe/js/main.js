@@ -224,6 +224,33 @@ $(function(){
 	$("#a-section3").click(function(){
 		app.goToSlide(3);
 	});
+    
+    // FETCH SHARE COUNTS
+    
+    var totalShareCount = 0;
+    var shareURL = "http://usescribe.com";
+    
+    $("#ShareCount").hide();
+    
+    $.getJSON("http://graph.facebook.com/?id=" + shareURL + "&callback=?", function(data) {
+        if (data.shares != null) {
+            totalShareCount += data.shares;
+            
+            if (totalShareCount > 10) {
+                $("#ShareCount").text(totalShareCount).fadeIn("slow");
+            }
+        }
+    });
+    
+    $.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + shareURL + "&callback=?", function(data) {
+        if (data.count != null) {
+            totalShareCount += data.count;
+            
+            if (totalShareCount > 10) {
+                $("#ShareCount").text(totalShareCount).fadeIn("slow");
+            }
+        }
+    });
 	
 	//OK ALIGN THE CONTENT
 	
