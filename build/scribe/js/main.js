@@ -228,25 +228,25 @@ $(function(){
     // FETCH SHARE COUNTS
     
     var totalShareCount = 0;
-    var shareURL = "http://usescribe.com";
+    var shareCountLimit = 50;
     
     $("#ShareCount").hide();
     
-    $.getJSON("http://graph.facebook.com/?id=" + shareURL + "&callback=?", function(data) {
-        if (data.shares != null) {
-            totalShareCount += data.shares;
-            
-            if (totalShareCount > 10) {
+    $.getJSON("http://graph.facebook.com/?id=https://www.facebook.com/pages/Scribe-App/247146968783861&callback=?", function(data) {
+        if (data.likes != null) {
+            totalShareCount += data.likes;
+
+            if (totalShareCount > shareCountLimit) {
                 $("#ShareCount").text(totalShareCount).fadeIn("slow");
             }
         }
     });
     
-    $.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + shareURL + "&callback=?", function(data) {
+    $.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=http://usescribe.com&callback=?", function(data) {
         if (data.count != null) {
             totalShareCount += data.count;
             
-            if (totalShareCount > 10) {
+            if (totalShareCount > shareCountLimit) {
                 $("#ShareCount").text(totalShareCount).fadeIn("slow");
             }
         }
