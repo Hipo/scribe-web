@@ -230,6 +230,33 @@ $(function(){
 	$("#a-section3").click(function(){
 		app.goToSlide(3);
 	});
+    
+    // FETCH SHARE COUNTS
+    
+    var totalShareCount = 0;
+    var shareCountLimit = 50;
+    
+    $("#ShareCount").hide();
+    
+    $.getJSON("http://graph.facebook.com/?id=https://www.facebook.com/pages/Scribe-App/247146968783861&callback=?", function(data) {
+        if (data.likes != null) {
+            totalShareCount += data.likes;
+
+            if (totalShareCount > shareCountLimit) {
+                $("#ShareCount").text(totalShareCount).fadeIn("slow");
+            }
+        }
+    });
+    
+    $.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=http://usescribe.com&callback=?", function(data) {
+        if (data.count != null) {
+            totalShareCount += data.count;
+            
+            if (totalShareCount > shareCountLimit) {
+                $("#ShareCount").text(totalShareCount).fadeIn("slow");
+            }
+        }
+    });
 	
 	//OK ALIGN THE CONTENT
 	
