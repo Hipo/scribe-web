@@ -30,18 +30,24 @@ var anim = {
 		$("#MacBook").css('left',"-50%");
 	},
 	reset: function(){
-		$("#mb-blur").fadeOut();
-		app.controlsShown = false;
-		$("#iPhone").removeClass("inScene");
-		$(".message,#controls").fadeOut();
-		mb_video.pause();
-		mb_video.currentTime = '0';
-		i_video.pause();
-		i_video.currentTime = '0';
+		if(!app.isMobile())
+		{
+			$("#mb-blur").fadeOut();
+			app.controlsShown = false;
+			$("#iPhone").removeClass("inScene");
+			$(".message,#controls").fadeOut();
+			mb_video.pause();
+			mb_video.currentTime = '0';
+			i_video.pause();
+			i_video.currentTime = '0';	
+		}
 	}
 }
 
 var app = {
+	isMobile:function(){
+		return $("#nav").is(":hidden");
+	},
 	controlsShown:false,
 	goToSlide : function(num){
 		this.refreshNav(num);
