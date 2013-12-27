@@ -238,7 +238,7 @@ $(function(){
     
     $("#ShareCount").hide();
     
-    $.getJSON("http://graph.facebook.com/?id=https://www.facebook.com/pages/Scribe-App/247146968783861&callback=?", function(data) {
+    $.getJSON("http://graph.facebook.com/?id=https://www.facebook.com/commandshiftx&callback=?", function(data) {
         if (data.likes != null) {
             totalShareCount += data.likes;
 
