@@ -103,6 +103,7 @@ $(function(){
     	fixedElements: '#logo, #nav',
     	slidesNavigation: false,
     	loopHorizontal: false,
+    	css3:true,
     	afterSlideLoad: function( anchorLink, index, slideAnchor, slideIndex){
     		app.refreshSlideNav(slideIndex);
     	},
@@ -346,6 +347,10 @@ function align_content()
 		height : $ip_height * 0.6942
 	});
 	
+	
+	$(document).on('click touchend', "form button", function () {
+		$("form").submit();
+	});
 	
 }
 
