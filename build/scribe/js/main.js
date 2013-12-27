@@ -346,7 +346,7 @@ function align_content()
 		width : $ip_width * 0.8101,
 		height : $ip_height * 0.6942
 	});
-	
+	 
 	
 	$(document).on('click touchend', "form button", function () {
 		$("form").submit();
