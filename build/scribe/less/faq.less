@@ -2458,7 +2458,7 @@ h1 {
 	-o-transition-duration:0.4s;
 	transition-duration:0.4s
 }
-.screen1 .top,.screen1 .bottom {
+.screen1 .top,.screen1 .bottom,.screen1 .middle {
 	font-size:19px;
 	width:100%;
 	-webkit-perspective:1000px;
@@ -2483,15 +2483,19 @@ h1 {
 	-webkit-transform:translate3d(0,0,0);
 	-webkit-transform-style:preserve-3d
 }
-.screen1 .top a,.screen1 .bottom a {
+.screen1 .top a,.screen1 .bottom a,.screen1 .middle a {
 	width:100%;
 	display:inline-block;
 	text-align:center;
 	color:#808080;
-	text-decoration:none
+	text-decoration:none;
 }
 .screen1 .top {
 	margin-bottom:65px
+}
+.screen1 .middle {
+	margin-top:65px;
+	padding-bottom:65px
 }
 .screen1 .bottom {
 	margin-top:65px;
@@ -2539,7 +2543,7 @@ h1 {
 	height:400px;
 	top:160px !important
 }
-.screen1.section2 .top,.screen1.section2 .bottom {
+.screen1.section2 .top,.screen1.section2 .bottom,.screen1.section2 .middle {
 
 	height:0 !important;
 	padding:0 !important
@@ -2553,6 +2557,9 @@ h1 {
 }
 .screen1 .step {
 	text-align:left
+}
+.screen1 .step a {
+	text-decoration:underline
 }
 .screen1 .step h2 {
 	font-size:18px;
@@ -2718,13 +2725,13 @@ h1 {
 		top:160px !important
 	}
 }
-#container,.top,.bottom,body {
+#container,.top,.bottom,.middle,body {
 	-webkit-backface-visibility:hidden;
 	-webkit-transform:translate3d(0,0,0);
 	-webkit-transform-style: preserve-3d;
 }
 @import "lesshat-prefixed.less";
-.top,.bottom{
+.top,.bottom,.middle{
 	.lh-animation-duration(0.3s)
 }
 

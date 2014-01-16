@@ -33,15 +33,17 @@ $(function(){
         }
     });
 	
-	$(".main-link").click(function(){
+	$("a.main-link").click(function(){
 		$(".screen1").addClass("section2 answers"+$(this).data("steps"));
-        setTimeout("$('.top,.bottom').addClass('fadeOut')",30);
+		$(".secondary").hide();
+        setTimeout("$('.top,.bottom,.middle').addClass('fadeOut')",30);
 	});
 	
 	$(".close").click(function(){
-        setTimeout("$('.top,.bottom').removeClass('fadeOut')",200);
+        setTimeout("$('.top,.bottom,.middle').removeClass('fadeOut')",200);
 		$(".screen1").removeClass("section2");
 		$(".screen1").removeClass("answers1 answers2");
+		$(".secondary").show();
 	});
 
     var to_share;
