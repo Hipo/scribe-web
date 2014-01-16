@@ -181,7 +181,7 @@ $(function(){
             }
             else if(index == 4)
             {
-	            $("#logo .bg").fadeOut();
+	            $("#logo .bg").fadeIn();
             }
         },
 		onLeave: function(index, direction){
@@ -255,7 +255,7 @@ $(function(){
 	$("#nav-3").click(function(){
 		app.goToSlide(3); 
 	});
-	$("#nav-4").click(function(){
+	$("#nav-4, #downloadLink").click(function(){
 		app.goToSlide(4); 
 	});
 	
