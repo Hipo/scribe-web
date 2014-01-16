@@ -181,7 +181,10 @@ $(function(){
             }
             else if(index == 4)
             {
-	            $("#logo .bg").fadeIn();
+            	if(app.isMobile())
+            		$("#logo .bg").fadeOut();
+            	else
+	            	$("#logo .bg").fadeIn();
             }
         },
 		onLeave: function(index, direction){
