@@ -10,6 +10,8 @@ var mb_video = document.getElementById("mb_video")
 var i_video = document.getElementById("i_video");
 
 var horizontalSlider;
+var horizontalSlider2;
+var horizontalSlider3;
 
 var anim = {
 	entriPhone : function(){
@@ -61,6 +63,16 @@ var app = {
 		num+=1;
 		$("#section-2 nav a").removeClass("selected");
 		$("#section-2 nav a:nth-child("+num.toString()+")").addClass("selected");
+	},
+	refreshSlideNav2 : function(num){
+		num+=1;
+		$("#nav-s3 a").removeClass("selected");
+		$("#nav-s3 a:nth-child("+num.toString()+")").addClass("selected");
+	},
+	refreshSlideNav3 : function(num){
+		num+=1;
+		$("#section-3-desktop nav a").removeClass("selected");
+		$("#section-3-desktop nav a:nth-child("+num.toString()+")").addClass("selected");
 	}
 }
 
@@ -70,7 +82,7 @@ $(window).load(function(){
 		setTimeout('anim.entrSection1Bottom()', 1400);
 	});
 	
-	horizontalSlider = $('.bxslider').bxSlider({
+	horizontalSlider = $('#slider .bxslider').bxSlider({
 		preventDefaultSwipeX : false,
 		pager:false,
 		controls: false,
@@ -80,8 +92,36 @@ $(window).load(function(){
 		}
 	});
 	
+	horizontalSlider2 = $('#slider2 .bxslider').bxSlider({
+		preventDefaultSwipeX : false,
+		pager:false,
+		controls: false,
+		infiniteLoop: false,
+		onSlideAfter: function($slideElement, oldIndex, newIndex){
+			app.refreshSlideNav2(newIndex);
+		}
+	});
+	
+	horizontalSlider3 = $('#slider3 .bxslider').bxSlider({
+		preventDefaultSwipeX : false,
+		pager:false,
+		controls: false,
+		infiniteLoop: false,
+		onSlideAfter: function($slideElement, oldIndex, newIndex){
+			app.refreshSlideNav3(newIndex);
+		}
+	});
+	
 	$("#section-2 nav a").click(function(){
 		horizontalSlider.goToSlide($(this).index());
+	});
+	
+	$("#nav-s3 a").click(function(){
+		horizontalSlider2.goToSlide($(this).index());
+	});
+
+	$("#section-3-desktop nav a").click(function(){
+		horizontalSlider3.goToSlide($(this).index());
 	});
 	
 	align_content();
@@ -111,6 +151,7 @@ $(function(){
             app.refreshNav(index);
             if(index == 1)
             {   
+            	$("#logo .bg").fadeIn();
 				var position = $("#logo-spacer").offset();
 			    $("#logo").css({
 			        top:position.top
@@ -121,6 +162,7 @@ $(function(){
             }
             else if(index == 2)
             {
+            	$("#logo .bg").fadeIn();
 	            $("#MacBook").addClass("fadeInLeftBig");
 				setTimeout("mb_video.play()", 1500);
 	            if(!$(".bxslider").is(":hidden"))
@@ -130,8 +172,16 @@ $(function(){
             }
             else if(index == 3)
             {
+            	if(app.isMobile())
+            		$("#logo .bg").fadeOut();
+            	else
+	            	$("#logo .bg").fadeIn();
 	            $("#fader").fadeOut();
 	            anim.reset();
+            }
+            else if(index == 4)
+            {
+	            $("#logo .bg").fadeOut();
             }
         },
 		onLeave: function(index, direction){
@@ -204,6 +254,9 @@ $(function(){
 	});
 	$("#nav-3").click(function(){
 		app.goToSlide(3); 
+	});
+	$("#nav-4").click(function(){
+		app.goToSlide(4); 
 	});
 	
 /* 	setTimeout('anim.entrMb()', 1200); */
@@ -297,6 +350,7 @@ function align_content()
 	};
 	
 	horizontalSlider.reloadSlider();
+	horizontalSlider2.reloadSlider();
 	
 	$mb_video.css(css);
 	$("#controls, .message").css(css);
@@ -347,6 +401,17 @@ function align_content()
 		height : $ip_height * 0.6942
 	});
 	 
+
+	if(!app.isMobile())
+	{
+		$("#slider2").hide();
+		$("#section-3-desktop").show();
+	} 
+	else
+	{
+		$("#slider2").show();
+		$("#section-3-desktop").hide();
+	}
 	
 	$(document).on('click touchend', "form button", function () {
 		$("form").submit();
