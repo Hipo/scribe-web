@@ -42,7 +42,7 @@ $(function(){
 	$(".close").click(function(){
         setTimeout("$('.top,.bottom,.middle').removeClass('fadeOut')",200);
 		$(".screen1").removeClass("section2");
-		$(".screen1").removeClass("answers1 answers2");
+		$(".screen1").removeClass("answers1 answers2 answers3");
 		$(".secondary").show();
 	});
 
