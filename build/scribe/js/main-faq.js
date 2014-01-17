@@ -36,11 +36,11 @@ $(function(){
 	$("a.main-link").click(function(){
 		$(".screen1").addClass("section2 answers"+$(this).data("steps"));
 		$(".secondary").hide();
-        setTimeout("$('.top,.bottom,.middle').addClass('fadeOut')",30);
+        setTimeout("$('.top,.bottom,.middle').addClass('fadeOut').addClass('height0')",30);
 	});
 	
 	$(".close").click(function(){
-        setTimeout("$('.top,.bottom,.middle').removeClass('fadeOut')",200);
+        setTimeout("$('.top,.bottom,.middle').removeClass('fadeOut height0')",200);
 		$(".screen1").removeClass("section2");
 		$(".screen1").removeClass("answers1 answers2 answers3");
 		$(".secondary").show();
@@ -72,9 +72,9 @@ $(window).resize(function(){
 //RESIZE FUNCTION
 function align_content()
 {
-	var height = $(window).height();
-	var s1_height = $(".screen1").outerHeight();
-	$(".screen1").css("top",((height-s1_height)/2)+140);
+	// var height = $(window).height();
+	// var s1_height = $(".screen1").outerHeight();
+	// $(".screen1").css("top",((height-s1_height)/2)+140);
 	$("#container").show();
 }
 
